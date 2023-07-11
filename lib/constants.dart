@@ -10,3 +10,13 @@ const kBottomContainerStyle = BoxDecoration(
         topLeft: Radius.circular(20), topRight: Radius.circular(20)));
 const primaryColor = Color(0xFFFFD9C0);
 const secondaryColor = Colors.white;
+const kTaskHeaderStyle =
+    TextStyle(color: primaryColor, fontSize: 40, fontWeight: FontWeight.w500);
+
+Color getPrimaryColor(Set<MaterialState> states) {
+    return primaryColor;
+  }
+
+Color getSecondaryColor(Set<MaterialState> states) {
+    return secondaryColor;
+  }
