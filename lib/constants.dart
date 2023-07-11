@@ -14,9 +14,19 @@ const kTaskHeaderStyle =
     TextStyle(color: primaryColor, fontSize: 40, fontWeight: FontWeight.w500);
 
 Color getPrimaryColor(Set<MaterialState> states) {
-    return primaryColor;
-  }
+  return primaryColor;
+}
 
 Color getSecondaryColor(Set<MaterialState> states) {
-    return secondaryColor;
-  }
+  return secondaryColor;
+}
+
+const kTextFieldStyle = InputDecoration(
+  hintText: 'Type here',
+  enabledBorder: UnderlineInputBorder(
+    borderSide: BorderSide(color: primaryColor),
+  ),
+  focusedBorder: UnderlineInputBorder(
+    borderSide: BorderSide(color: primaryColor),
+  ),
+);

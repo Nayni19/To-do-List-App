@@ -21,15 +21,7 @@ class AddTask extends StatelessWidget {
               TextField(
                 textAlign: TextAlign.center,
                 autofocus: true,
-                decoration: InputDecoration(
-                  hintText: 'Type here',
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: primaryColor),
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: primaryColor),
-                  ),
-                ),
+                decoration: kTextFieldStyle,
               ),
               SizedBox(
                 height: 30,
