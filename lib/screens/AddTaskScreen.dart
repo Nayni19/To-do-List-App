@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todo_app/constants.dart';
+import '../models/Task_data.dart';
+import '../models/Task.dart';
 
 class AddTask extends StatelessWidget {
-  final Function getText;
-  const AddTask({super.key, required this.getText});
+  const AddTask({super.key});
   @override
   Widget build(BuildContext context) {
 
@@ -32,7 +34,8 @@ class AddTask extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: (){
-                  getText(taskTitle);
+                  Provider.of<TaskData>(context, listen: false).addTask(taskTitle);
+                  Navigator.pop(context);
                 },
                 child: const Text(
                   'Add',

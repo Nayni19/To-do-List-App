@@ -3,25 +3,11 @@ import 'package:todo_app/screens/AddTaskScreen.dart';
 import '../components/TasksList.dart';
 import '../components/Icon.dart';
 import '../constants.dart';
-import '../models/Task.dart';
+import 'package:provider/provider.dart';
+import '../models/Task_data.dart';
 
-class TasksScreen extends StatefulWidget {
-  const TasksScreen({super.key});
-
+class TasksScreen extends StatelessWidget {
   @override
-  State<TasksScreen> createState() => _TasksScreenState();
-}
-
-class _TasksScreenState extends State<TasksScreen> {
-  @override
-List<Task> tasksList = [
-      Task(name: 'Buy Milk'),
-      Task(name: 'Go to lamington'),
-      Task(name: 'Buy groceries'),
-      Task(name: 'Pay the vendors in time'),
-      Task(name: 'Buy Milk'),
-    ];
-
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryColor,
@@ -34,13 +20,7 @@ List<Task> tasksList = [
                       child: Container(
                     padding: EdgeInsets.only(
                         bottom: MediaQuery.of(context).viewInsets.bottom),
-                    child: AddTask(getText: (String val) {
-                      print(val);
-                      setState(() {
-                        tasksList.add(Task(name: val));
-                      });
-                      Navigator.pop(context);
-                    }),
+                    child: AddTask(),
                   )));
         },
         backgroundColor: primaryColor,
@@ -60,7 +40,7 @@ List<Task> tasksList = [
                 SizedBox(height: 20),
                 Text('Todoey', style: kHeaderStyle),
                 SizedBox(height: 10),
-                Text('${tasksList.length} Tasks', style: kSubHeaderStyle),
+                Text('${Provider.of<TaskData>(context).itemCount} Tasks', style: kSubHeaderStyle),
               ],
             ),
           ),
@@ -68,9 +48,7 @@ List<Task> tasksList = [
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
               decoration: kBottomContainerStyle,
-              child: TasksList(
-                tasks: tasksList,
-              ),
+              child: TasksList(),
             ),
           )
         ],
