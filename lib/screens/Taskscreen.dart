@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import '../components/TasksList.dart';
+import '../components/Icon.dart';
+import '../constants.dart';
 
 class TasksScreen extends StatelessWidget {
   const TasksScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      backgroundColor: Color(0xFF331D2C),
+      backgroundColor: primaryColor,
+      floatingActionButton: FloatingActionButton(onPressed: null, backgroundColor: primaryColor, child: Icon(Icons.add),),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -15,25 +20,22 @@ class TasksScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
-                CircleAvatar(
-                  backgroundColor: Colors.white,
-                  radius: 30,
-                    child: Icon(Icons.list, size: 40, color: Color(0xFF331D2C))),
+                CircleIcon(),
                 SizedBox(height: 20),
                 Text('Todoey', 
-                style: TextStyle(color: Colors.white, fontSize: 50, fontWeight: FontWeight.w700),
+                style: kHeaderStyle
                 ),
                 SizedBox(height: 10),
-                Text('12 Tasks', style: TextStyle(
-                  color: Colors.white, fontSize: 20, fontWeight: FontWeight.w300
-                ),)
+                Text('12 Tasks', style: kSubHeaderStyle)
                 
               ],
             ),
           ),
           Expanded(
             child: Container(
-              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+                padding: EdgeInsets.symmetric(horizontal: 20),
+              decoration: kBottomContainerStyle,
+              child: TasksList(),
             ),
           )
         ],
@@ -41,3 +43,7 @@ class TasksScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+
